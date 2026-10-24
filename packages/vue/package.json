@@ -17,7 +17,7 @@
   "scripts": {
     "build": "tsup src/index.ts",
     "dev": "pnpm run build --watch",
-    "test": "vitest run && tsc --noEmit -p tsconfig.test.json",
+    "test": "pnpm --filter @tryabby/core build && pnpm run build && vitest run && tsc --noEmit -p tsconfig.test.json",
     "demo:build": "vite build --config demo/vite.config.ts"
   },
   "homepage": "https://docs.tryabby.com",

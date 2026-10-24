@@ -39,10 +39,16 @@ const server = createServer(async (request, response) => {
       .end(JSON.stringify(events));
     return;
   }
-  const filename = path.resolve(
-    root,
-    `.${decodeURIComponent(url.pathname === "/" ? "/index.html" : url.pathname)}`
-  );
+  let pathname;
+  try {
+    pathname = decodeURIComponent(
+      url.pathname === "/" ? "/index.html" : url.pathname
+    );
+  } catch {
+    response.writeHead(400).end();
+    return;
+  }
+  const filename = path.resolve(root, `.${pathname}`);
   if (
     !filename.startsWith(`${root}${path.sep}`) &&
     filename !== path.join(root, "index.html")

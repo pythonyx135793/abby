@@ -131,11 +131,9 @@ Render `<AbbyDevtools />` once. It initializes on mount in development and clean
 
 ## Development and local demo
 
-From the repository root, build core and this package before testing:
+From the repository root, the test command builds core and this package before running the runtime and type checks:
 
 ```sh
-pnpm --filter @tryabby/core build
-pnpm --filter @tryabby/vue build
 pnpm --filter @tryabby/vue test
 pnpm --filter @tryabby/vue demo:build
 node packages/vue/demo/serve.mjs
